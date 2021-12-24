@@ -1,0 +1,83 @@
+-------------------------------------------------------
+create phpmyadmin resource
+CLI request:
+
+curl -X POST http://<IP>:32111/pmas \
+    -H "Content-Type: application/json" \
+    -d '{"username": "user3", "mem_limit":"1g"}'
+
+
+hasil:
+{
+  "info": {
+    "mysql_port": 18069,
+    "phpmyadmin_port": 19963,
+    "username": "user1"
+  },
+  "status": "OK"
+}
+
+----------------------------------------------------------
+
+get info by username
+
+CLI request:
+
+curl -X GET http://<IP>:32111/pma/user1
+
+hasil:
+{
+  "info": {
+    "mysql_port": 18069,
+    "phpmyadmin_port": 19963,
+    "username": "user1"
+  },
+  "status": "OK"
+}
+
+----------------------------------------------------------
+
+get stats container by username
+
+CLI request:
+
+curl -X GET http://<IP>:32111/stats/user1
+
+hasil:
+{
+  "MySQL": {
+    "container_name": [
+      "/user1-mysql"
+    ],
+    "memory_stats": {
+      "max_usage": "447967232 bytes",
+      "usage": "426405888 bytes"
+    },
+    "state": "running",
+    "status": "Up About a minute"
+  },
+  "PHPMyAdmin": {
+    "container_name": [
+      "/user1-phpmyadmin"
+    ],
+    "memory_stats": {
+      "max_usage": 16404480,
+      "usage": 15847424
+    },
+    "state": "running",
+    "status": "Up About a minute"
+  },
+  "status": "OK"
+}
+
+------------------------------------------------------------
+delete by username
+
+CLI request:
+
+curl -X DELETE http://<IP>:32111/pma/user1
+
+hasil:
+{
+  "status": "OK"
+}

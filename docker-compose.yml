@@ -1,0 +1,8 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  provisioning-master:
+    image: "dimasadh/provisioning-master"
+    ports:
+      - "32111:32111"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
