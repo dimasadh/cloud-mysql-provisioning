@@ -1,4 +1,16 @@
 -------------------------------------------------------
+Initialize docker swarm
+docker swarm init
+
+-------------------------------------------------------
+Deploy service using docker swarm
+docker stack deploy --compose-file docker-compose.yml provisioning-master
+
+-------------------------------------------------------
+Join worker (Dari mesin lain)
+docker swarm join --token <TOKEN> <IP>
+
+-------------------------------------------------------
 create phpmyadmin resource
 CLI request:
 
